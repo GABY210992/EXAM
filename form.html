@@ -1,25 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Predicción del valor</title>
+    <meta charset="UTF-8" />
+    <title>Formulario de Predicción</title>
 </head>
 <body>
-  <h2>Formulario para predicción</h2>
-  <form action="/predict" method="post">
-    <label>Año:</label>
-    <input type="number" name="year" required><br>
+    <h1>Formulario para Predecir</h1>
+    <form method="post" action="/predict">
+        <label for="year">Año:</label><br/>
+        <input type="number" step="any" id="year" name="year" required><br/><br/>
+        
+        <label for="km_driven">Kilómetros recorridos:</label><br/>
+        <input type="number" step="any" id="km_driven" name="km_driven" required><br/><br/>
+        
+        <label for="seats">Número de asientos:</label><br/>
+        <input type="number" step="any" id="seats" name="seats" required><br/><br/>
+        
+        <button type="submit">Predecir</button>
+    </form>
 
-    <label>Kilómetros recorridos:</label>
-    <input type="number" name="km_driven" required><br>
-
-    <label>Asientos:</label>
-    <input type="number" name="seats" required><br>
-
-    <button type="submit">Predecir</button>
-  </form>
-
-  {% if result %}
-    <h3>{{ result }}</h3>
-  {% endif %}
+    {% if result %}
+        <h2>Resultado:</h2>
+        <p>{{ result }}</p>
+    {% endif %}
 </body>
 </html>
+
