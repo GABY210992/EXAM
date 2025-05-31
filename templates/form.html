@@ -1,27 +1,99 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <title>Formulario de Predicción</title>
+    <meta charset="UTF-8">
+    <title>Predicción de Precio</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 60px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        label {
+            font-weight: bold;
+            color: #34495e;
+        }
+        input[type="number"] {
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            padding: 12px;
+            background-color: #2e86de;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #1b4f72;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #eafaf1;
+            color: #2e7d32;
+            border-left: 6px solid #2e7d32;
+            border-radius: 6px;
+            font-size: 1.1em;
+        }
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85em;
+            color: #7f8c8d;
+        }
+    </style>
 </head>
 <body>
-    <h1>Formulario para Predecir</h1>
-    <form method="post" action="/predict">
-        <label for="year">Año:</label><br/>
-        <input type="number" step="any" id="year" name="year" required><br/><br/>
-        
-        <label for="km_driven">Kilómetros recorridos:</label><br/>
-        <input type="number" step="any" id="km_driven" name="km_driven" required><br/><br/>
-        
-        <label for="seats">Número de asientos:</label><br/>
-        <input type="number" step="any" id="seats" name="seats" required><br/><br/>
-        
-        <button type="submit">Predecir</button>
-    </form>
+    <div class="container">
+        <h1>Estimación de Precio del Vehículo</h1>
+        <form action="/predict" method="post">
+            <div>
+                <label for="year">Año del Vehículo:</label>
+                <input type="number" id="year" name="year" required>
+            </div>
+            <div>
+                <label for="km_driven">Kilómetros Recorridos:</label>
+                <input type="number" id="km_driven" name="km_driven" required>
+            </div>
+            <div>
+                <label for="seats">Número de Asientos:</label>
+                <input type="number" id="seats" name="seats" required>
+            </div>
+            <input type="submit" value="Predecir Valor">
+        </form>
 
-    {% if result %}
-        <h2>Resultado:</h2>
-        <p>{{ result }}</p>
-    {% endif %}
+        {% if result %}
+        <div class="result">
+            {{ result }}
+        </div>
+        {% endif %}
+
+        <div class="footer">
+            © 2025 Equipo de Ciencia de Datos – Predicción de Precios
+        </div>
+    </div>
 </body>
 </html>
