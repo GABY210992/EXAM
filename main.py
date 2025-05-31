@@ -14,7 +14,7 @@ def form_get(request: Request):
     return templates.TemplateResponse("form.html", {"request": request})
 
 @app.post("/predict", response_class=HTMLResponse)
-def predict(request: Request, year: float = Form(...), km_driven: float = Form(...), seats: float = Form(...)]])
+def predict(request: Request, year: float = Form(...), km_driven: float = Form(...), seats: float = Form(...)])
     prediction = model.predict(features)[0]
     return templates.TemplateResponse("form.html", {"request": request, "result": f"Predicción: Clase {prediction}"})
 
