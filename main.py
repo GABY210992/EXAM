@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 import joblib
-import pandas as pd  # lo agrego para crear el DataFrame
+import pandas as pd 
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
